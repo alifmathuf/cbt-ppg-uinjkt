@@ -1,15 +1,21 @@
 :root {
-  --bg: #f4f6fb;
-  --card: #ffffff;
-  --text: #1f2937;
-  --primary: #2563eb;
-  --border: #e5e7eb;
+  --bg: #f4f6f8;
+  --text: #111;
+  --card: #fff;
 }
 
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.card {
+  background: var(--card);
+}
+
+/* DARK MODE */
 body.dark {
-  --bg: #0f172a;
-  --card: #1e293b;
-  --text: #e5e7eb;
-  --primary: #60a5fa;
-  --border: #334155;
+  --bg: #121212;
+  --text: #f1f1f1;
+  --card: #1e1e1e;
 }
