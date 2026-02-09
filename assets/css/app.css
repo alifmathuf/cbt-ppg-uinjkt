@@ -184,3 +184,27 @@ button {
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 14px;
 }
+button {
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 14px;
+  transition: .2s ease;
+}
+
+button.primary {
+  background: #2563eb;
+  color: #fff;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  margin-top: auto;
+  padding: 12px;
+  text-align: center;
+  font-size: 13px;
+  opacity: .7;
+}
