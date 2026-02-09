@@ -17,3 +17,11 @@ document.getElementById("kasusCount").textContent =
 
 document.getElementById("avgScore").textContent =
   state.pg.score ?? "-";
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".clickable").forEach(card => {
+    card.addEventListener("click", () => {
+      const link = card.dataset.link;
+      if (link) window.location.href = link;
+    });
+  });
+});
