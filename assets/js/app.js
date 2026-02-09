@@ -1,37 +1,38 @@
-/* =========================
-   LOGIN
-========================= */
 function login() {
-  const nama = document.getElementById('nama')?.value.trim();
-  const kelas = document.getElementById('kelas')?.value.trim();
+  const nama = document.getElementById('nama').value.trim();
+  const kelas = document.getElementById('kelas').value.trim();
 
   if (!nama || !kelas) {
     alert('Nama dan kelas wajib diisi');
     return;
   }
 
-  localStorage.setItem(
-    'cbtUser',
-    JSON.stringify({ nama, kelas })
-  );
+  localStorage.setItem('cbtUser', JSON.stringify({
+    nama,
+    kelas
+  }));
 
-  // GitHub Pages path
+  // ABSOLUTE PATH
   window.location.href = '/cbt-web-app/pages/dashboard.html';
 }
-
-/* =========================
-   LOGOUT
-========================= */
-function logout() {
-  if (confirm('Yakin ingin keluar?')) {
-    localStorage.removeItem('cbtUser');
-    window.location.href = '/cbt-web-app/index.html';
-  }
+function toggleTheme() {
+  document.body.classList.toggle('dark');
+  localStorage.setItem(
+    'theme',
+    document.body.classList.contains('dark') ? 'dark' : 'light'
+  );
 }
 
-/* =========================
-   AUTO THEME BY TIME
-========================= */
+// LOAD SAAT AWAL
+if (localStorage.getItem('theme') === 'dark') {
+  document.body.classList.add('dark');
+}
+function logout() {
+  if (confirm('Yakin ingin keluar?')) {
+    localStorage.clear();
+    window.location.href = '../index.html';
+  }
+}
 function autoThemeByTime() {
   const hour = new Date().getHours();
 
@@ -42,13 +43,8 @@ function autoThemeByTime() {
   }
 }
 
-/* =========================
-   GREETING
-========================= */
-function applyGreeting() {
-  const greetingEl = document.getElementById('greeting');
-  if (!greetingEl) return;
-
+document.addEventListener('DOMContentLoaded', autoThemeByTime);
+function greetingByTime() {
   const hour = new Date().getHours();
   let waktu = 'pagi';
 
@@ -56,32 +52,5 @@ function applyGreeting() {
   else if (hour >= 15 && hour < 18) waktu = 'sore';
   else if (hour >= 18 || hour < 6) waktu = 'malam';
 
-  greetingEl.innerText = `Assalaamualaikum, selamat ${waktu}`;
+  return `Assalaamualaikum, selamat ${waktu}`;
 }
-
-/* =========================
-   LOAD USER INFO
-========================= */
-function loadUserInfo() {
-  const userInfoEl = document.getElementById('userInfo');
-  const user = JSON.parse(localStorage.getItem('cbtUser'));
-
-  if (!user) {
-    // kalau belum login, paksa balik
-    window.location.href = '/cbt-web-app/index.html';
-    return;
-  }
-
-  if (userInfoEl) {
-    userInfoEl.innerText = `${user.nama} (${user.kelas})`;
-  }
-}
-
-/* =========================
-   INIT
-========================= */
-document.addEventListener('DOMContentLoaded', () => {
-  autoThemeByTime();
-  applyGreeting();
-  loadUserInfo();
-});
