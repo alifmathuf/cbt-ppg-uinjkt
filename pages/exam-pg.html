@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ujian Pilihan Ganda</title>
+
+  <link rel="stylesheet" href="../assets/css/theme.css">
+  <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body>
+
+<main class="container">
+
+  <!-- HEADER -->
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <div id="timer">120:00</div>
+      <div id="progressText">0 / 50</div>
+    </div>
+    <div class="progress-bar">
+      <div id="progressFill"></div>
+    </div>
+  </div>
+
+  <!-- SOAL -->
+  <div class="card">
+    <h3 id="noSoal">Soal 1</h3>
+    <p id="pertanyaan"></p>
+
+    <div id="opsi"></div>
+  </div>
+
+  <!-- NAVIGASI -->
+  <div class="card">
+    <button onclick="prevSoal()">Sebelumnya</button>
+    <button onclick="nextSoal()">Selanjutnya</button>
+    <button id="btnSelesai" onclick="selesaiUjian()" disabled>Selesai</button>
+  </div>
+
+  <!-- GRID NOMOR -->
+  <div class="card soal-grid" id="soalGrid"></div>
+
+</main>
+
+<footer>© CBT Web App</footer>
+
+<script src="../assets/js/exam-pg.js"></script>
+</body>
+</html>
