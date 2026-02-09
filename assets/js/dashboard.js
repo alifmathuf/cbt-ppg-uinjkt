@@ -45,3 +45,12 @@ document.addEventListener('DOMContentLoaded', () => {
     greetEl.textContent = `${greetingByTime()}, ${user.nama}`;
   }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const user = JSON.parse(localStorage.getItem('user'));
+  const greet = document.getElementById('greeting');
+
+  if (user && greet) {
+    greet.textContent = `${greetingByTime()}, ${user.nama}`;
+  }
+});
