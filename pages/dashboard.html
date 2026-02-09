@@ -1,106 +1,48 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Dashboard | CBT</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard CBT</title>
 
-  <!-- favicon -->
-  <link rel="icon" href="../assets/icons/favicon.ico">
-
-  <!-- css -->
-  <link rel="stylesheet" href="../assets/css/base.css">
-  <link rel="stylesheet" href="../assets/css/theme.css">
-  <link rel="stylesheet" href="../assets/css/layout.css">
-  <link rel="stylesheet" href="../assets/css/components.css">
-  <link rel="stylesheet" href="../assets/css/app.css">
-<link rel="stylesheet" href="/cbt-web-app/assets/css/app.css">
+  <link rel="stylesheet" href="../assets/css/theme.css" />
+  <link rel="stylesheet" href="../assets/css/app.css" />
 </head>
-
 <body>
-  <div id="app-header"></div>
-<section class="card">
-  <h3>Pilih Mata Pelajaran</h3>
 
-  <div class="mapel-grid" id="mapelGrid">
-    <button class="mapel-btn" data-mapel="qurdist">Qurdis</button>
-    <button class="mapel-btn" data-mapel="aqidah">Aqidah</button>
-    <button class="mapel-btn" data-mapel="fiqih">Fiqih</button>
-    <button class="mapel-btn" data-mapel="ski">SKI</button>
-    <button class="mapel-btn" data-mapel="pai">PAI</button>
-    <button class="mapel-btn" data-mapel="arab">Bahasa Arab</button>
-    <button class="mapel-btn" data-mapel="gkmi">GKMI</button>
-    <button class="mapel-btn" data-mapel="gkra">GKRA</button>
+<main class="container">
+
+  <div class="card">
+    <h2 id="userInfo">Dashboard</h2>
+    <p>Silakan pilih ujian</p>
   </div>
-</section>
 
-  <section class="card">
-  <h3>Pilih Paket Soal</h3>
+  <div class="card">
+    <label>Mata Pelajaran</label>
+    <select id="mapel">
+      <option value="qurdist">Qurdist</option>
+      <option value="aqidah">Aqidah</option>
+      <option value="fiqih">Fiqih</option>
+      <option value="ski">SKI</option>
+      <option value="pai">PAI</option>
+      <option value="arab">Bahasa Arab</option>
+      <option value="gkmi">GKMI</option>
+      <option value="gkra">GKRA</option>
+    </select>
+  </div>
 
-  <select id="paketSelect">
-    <option value="">-- Pilih Paket --</option>
-    <option value="A">Paket A</option>
-    <option value="B">Paket B</option>
-    <option value="C">Paket C</option>
-    <option value="D">Paket D</option>
-  </select>
-</section>
-
-  <section class="card">
-  <h3>Tipe Ujian</h3>
-
-  <label>
-    <input type="radio" name="tipe" value="pg"> Pilihan Ganda
-  </label><br>
-
-  <label>
+  <div class="card">
+    <label>Tipe Ujian</label><br>
+    <input type="radio" name="tipe" value="pg"> Pilihan Ganda<br>
     <input type="radio" name="tipe" value="case"> Studi Kasus
-  </label>
-</section>
-  <main class="dashboard">
-    <!-- USER CARD -->
-    <section class="card user-card">
-      <img id="avatar" class="avatar" />
-      <div>
-        <h2 id="username">Peserta</h2>
-        <p>Selamat datang di sistem CBT</p>
-      </div>
-    </section>
+  </div>
 
-    <!-- STATS -->
-    <section class="stats-grid">
-      <div class="card stat">
-        <h3>Ujian PG</h3>
-        <span id="pgCount">0</span>
-      </div>
-      <div class="card stat">
-        <h3>Studi Kasus</h3>
-        <span id="kasusCount">0</span>
-      </div>
-      <div class="card stat">
-        <h3>Rata-rata Nilai</h3>
-        <span id="avgScore">-</span>
-      </div>
-    </section>
-<button id="startExam" class="btn btn-primary" disabled>
-  Mulai Ujian
-</button>
-    <!-- CHART -->
-    <section class="card">
-      <canvas id="scoreChart"></canvas>
-    </section>
-  </main>
+  <button onclick="mulaiUjian()">Mulai Ujian</button>
 
-  <div id="app-footer"></div>
+</main>
 
+<footer>© CBT Web App</footer>
 
-  <!-- Chart.js CDN -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<!-- App Core -->
-<script type="module" src="../assets/js/app.js"></script>
-
-<!-- Dashboard Logic -->
-<script src="/cbt-web-app/assets/js/dashboard.js"></script>
-  <script type="module" src="../assets/js/dashboard.js"></script>
+<script src="../assets/js/dashboard.js"></script>
 </body>
 </html>
