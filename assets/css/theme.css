@@ -1,7 +1,8 @@
 :root {
-  --bg: #f4f6f8;
-  --text: #111;
-  --card: #fff;
+  --bg: linear-gradient(135deg, #0f172a, #1e293b);
+  --text: #e5e7eb;
+  --card: #020617;
+  --primary: #3b82f6;
 }
 
 body {
@@ -11,11 +12,4 @@ body {
 
 .card {
   background: var(--card);
-}
-
-/* DARK MODE */
-body.dark {
-  --bg: #121212;
-  --text: #f1f1f1;
-  --card: #1e1e1e;
 }
