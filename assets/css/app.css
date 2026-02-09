@@ -43,3 +43,8 @@ body {
 }
 
 /* =====================
+
+.mapel.active {
+  outline: 2px solid var(--primary);
+  background: rgba(59,130,246,.25);
+}
