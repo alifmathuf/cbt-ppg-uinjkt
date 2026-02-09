@@ -214,3 +214,28 @@ input {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+.mapel-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+@media (min-width: 768px) {
+  .mapel-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.mapel-btn {
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  font-weight: 600;
+}
+
+.mapel-btn.active {
+  background: var(--primary);
+  color: #fff;
+}
