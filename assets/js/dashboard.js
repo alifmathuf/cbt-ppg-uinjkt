@@ -37,3 +37,11 @@ if (hasilPG) {
 if (hasilCase) {
   rekap.innerText += ` | Studi Kasus: ${hasilCase.jenis}`;
 }
+document.addEventListener('DOMContentLoaded', () => {
+  const user = JSON.parse(localStorage.getItem('user'));
+  const greetEl = document.getElementById('greeting');
+
+  if (greetEl && user) {
+    greetEl.textContent = `${greetingByTime()}, ${user.nama}`;
+  }
+});
