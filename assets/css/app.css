@@ -37,6 +37,33 @@
   font-size: 1.8rem;
   font-weight: bold;
 }
+
+
+/* =========================
+   RESULT PAGE
+========================= */
+
+.result {
+  padding: 16px;
+  display: grid;
+  gap: 16px;
+}
+
+.result-header {
+  text-align: center;
+}
+
+.score {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #22c55e;
+  text-align: center;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+}
 .footer {
   text-align: center;
   padding: 12px;
