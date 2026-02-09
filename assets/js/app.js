@@ -12,5 +12,6 @@ function login() {
     kelas
   }));
 
-  window.location.href = './pages/dashboard.html';
+  // ABSOLUTE PATH
+  window.location.href = '/cbt-web-app/pages/dashboard.html';
 }
