@@ -44,6 +44,18 @@
     <option value="D">Paket D</option>
   </select>
 </section>
+
+  <section class="card">
+  <h3>Tipe Ujian</h3>
+
+  <label>
+    <input type="radio" name="tipe" value="pg"> Pilihan Ganda
+  </label><br>
+
+  <label>
+    <input type="radio" name="tipe" value="case"> Studi Kasus
+  </label>
+</section>
   <main class="dashboard">
     <!-- USER CARD -->
     <section class="card user-card">
@@ -69,7 +81,9 @@
         <span id="avgScore">-</span>
       </div>
     </section>
-
+<button id="startExam" class="btn btn-primary" disabled>
+  Mulai Ujian
+</button>
     <!-- CHART -->
     <section class="card">
       <canvas id="scoreChart"></canvas>
