@@ -164,6 +164,12 @@ body {
   box-shadow: 0 10px 25px rgba(0,0,0,.08);
 }
 
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 12px;
+}
+
 .footer {
   text-align: center;
   padding: 12px;
