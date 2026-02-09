@@ -34,16 +34,31 @@ if (hasilPG) {
   });
 }
 
-// ===== STUDI KASUS =====
+// ===== STUDI KASUS (DETAIL) =====
 if (hasilCase) {
-  const div = document.createElement('div');
-  div.className = 'card';
-  div.innerHTML = `
-    <h3>Studi Kasus</h3>
-    <p><b>Jenis:</b> ${hasilCase.jenis}</p>
-    <p>Jawaban berhasil disimpan.</p>
+  const wrap = document.getElementById('caseResult');
+
+  let html = `
+    <div class="card">
+      <h3>Hasil Studi Kasus</h3>
+      <p><b>Jenis:</b> ${hasilCase.jenis}</p>
+    </div>
   `;
-  document.querySelector('.container').appendChild(div);
+
+  hasilCase.jawaban.forEach((teks, i) => {
+    const kata = teks.trim().split(/\s+/).filter(Boolean).length;
+    const karakter = teks.length;
+
+    html += `
+      <div class="card">
+        <h4>Jawaban ${i + 1}</h4>
+        <p>Jumlah kata: <b>${kata}</b></p>
+        <p>Jumlah karakter: <b>${karakter}</b></p>
+      </div>
+    `;
+  });
+
+  wrap.innerHTML = html;
 }
 
 function kembali() {
