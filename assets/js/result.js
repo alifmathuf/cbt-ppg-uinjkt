@@ -102,20 +102,56 @@ function kembali() {
 function exportPDF() {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
-
   let y = 20;
-
-  doc.setFontSize(14);
-  doc.text('HASIL UJIAN CBT', 20, y);
-  y += 10;
 
   const user = JSON.parse(localStorage.getItem('user'));
   const hasilPG = JSON.parse(localStorage.getItem('hasilPG'));
   const hasilCase = JSON.parse(localStorage.getItem('hasilCase'));
+  const soalPG = JSON.parse(localStorage.getItem('soalPG'));
+
+  doc.setFontSize(14);
+  doc.text('LAPORAN HASIL UJIAN CBT', 20, y); y += 10;
 
   doc.setFontSize(11);
-  doc.text(`Nama: ${user?.nama || '-'}`, 20, y); y += 6;
-  doc.text(`Kelas: ${user?.kelas || '-'}`, 20, y); y += 10;
+  doc.text(`Nama: ${user.nama}`, 20, y); y += 6;
+  doc.text(`Kelas: ${user.kelas}`, 20, y); y += 10;
+
+  // ===== PG =====
+  if (hasilPG && soalPG) {
+    doc.text('A. PILIHAN GANDA', 20, y); y += 8;
+
+    soalPG.forEach((s, i) => {
+      if (y > 270) { doc.addPage(); y = 20; }
+      doc.text(`${i + 1}. ${s.q}`, 20, y); y += 6;
+
+      s.o.forEach((opsi, idx) => {
+        const prefix = idx === s.userAnswer ? '→ ' : '   ';
+        doc.text(`${prefix}${String.fromCharCode(65 + idx)}. ${opsi}`, 25, y);
+        y += 5;
+      });
+
+      y += 4;
+    });
+  }
+
+  // ===== STUDI KASUS =====
+  if (hasilCase) {
+    doc.addPage();
+    y = 20;
+
+    doc.text('B. STUDI KASUS', 20, y); y += 8;
+    doc.text(`Jenis: ${hasilCase.jenis}`, 20, y); y += 8;
+
+    hasilCase.jawaban.forEach((j, i) => {
+      if (y > 270) { doc.addPage(); y = 20; }
+      doc.text(`Jawaban ${i + 1}:`, 20, y); y += 6;
+      doc.text(doc.splitTextToSize(j, 170), 20, y);
+      y += 20;
+    });
+  }
+
+  doc.save(`ujian_${user.nama}.pdf`);
+}
 
   if (hasilPG) {
     doc.text('Pilihan Ganda', 20, y); y += 6;
