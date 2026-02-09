@@ -12,3 +12,4 @@ import { load } from "./components.js";
 
 load("app-header", "components/header.html");
 load("app-footer", "components/footer.html");
+load("exam-header", "components/header-exam.html");
