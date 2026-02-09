@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard | CBT</title>
+
+  <!-- favicon -->
+  <link rel="icon" href="../assets/icons/favicon.ico">
+
+  <!-- css -->
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/theme.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+
+<body>
+  <div id="app-header"></div>
+
+  <main class="dashboard">
+    <!-- USER CARD -->
+    <section class="card user-card">
+      <img id="avatar" class="avatar" />
+      <div>
+        <h2 id="username">Peserta</h2>
+        <p>Selamat datang di sistem CBT</p>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats-grid">
+      <div class="card stat">
+        <h3>Ujian PG</h3>
+        <span id="pgCount">0</span>
+      </div>
+      <div class="card stat">
+        <h3>Studi Kasus</h3>
+        <span id="kasusCount">0</span>
+      </div>
+      <div class="card stat">
+        <h3>Rata-rata Nilai</h3>
+        <span id="avgScore">-</span>
+      </div>
+    </section>
+
+    <!-- CHART -->
+    <section class="card">
+      <canvas id="scoreChart"></canvas>
+    </section>
+  </main>
+
+  <div id="app-footer"></div>
+
+  <script type="module" src="../assets/js/app.js"></script>
+  <script type="module" src="../assets/js/dashboard.js"></script>
+</body>
+</html>
