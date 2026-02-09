@@ -27,3 +27,9 @@ function toggleTheme() {
 if (localStorage.getItem('theme') === 'dark') {
   document.body.classList.add('dark');
 }
+function logout() {
+  if (confirm('Yakin ingin keluar?')) {
+    localStorage.clear();
+    window.location.href = '../index.html';
+  }
+}
