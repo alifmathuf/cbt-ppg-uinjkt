@@ -25,3 +25,44 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+let selectedMapel = "";
+let selectedPaket = "";
+let selectedTipe = "";
+
+const mapelButtons = document.querySelectorAll(".mapel-btn");
+const paketSelect = document.getElementById("paketSelect");
+const startBtn = document.getElementById("startExam");
+
+mapelButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    mapelButtons.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    selectedMapel = btn.dataset.mapel;
+    checkReady();
+  });
+});
+
+paketSelect.addEventListener("change", e => {
+  selectedPaket = e.target.value;
+  checkReady();
+});
+
+document.querySelectorAll("input[name='tipe']").forEach(radio => {
+  radio.addEventListener("change", e => {
+    selectedTipe = e.target.value;
+    checkReady();
+  });
+});
+
+function checkReady() {
+  startBtn.disabled = !(selectedMapel && selectedPaket && selectedTipe);
+}
+
+startBtn.addEventListener("click", () => {
+  if (selectedTipe === "pg") {
+    window.location.href = `/cbt-web-app/exam/pg.html`;
+  } else {
+    window.location.href = `/cbt-web-app/exam/case.html`;
+  }
+});
+}
