@@ -1,32 +1,15 @@
 :root {
-  /* =====================
-     BACKGROUND
-  ===================== */
-  --bg-main: linear-gradient(135deg, #0f172a, #1e293b);
-  --bg-card: #020617;
-  --bg-soft: #020617cc;
-
-  /* =====================
-     TEXT
-  ===================== */
-  --text-main: #e5e7eb;
-  --text-title: #f8fafc;
-
-  /* =====================
-     BORDER & DIVIDER
-  ===================== */
-  --border: #334155;
-
-  /* =====================
-     PRIMARY COLOR
-  ===================== */
+  --bg: linear-gradient(135deg, #0f172a, #1e293b);
+  --text: #e5e7eb;
+  --card: #020617;
   --primary: #3b82f6;
-  --primary-hover: #2563eb;
+}
 
-  /* =====================
-     STATUS
-  ===================== */
-  --success: #22c55e;
-  --warning: #facc15;
-  --danger: #ef4444;
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.card {
+  background: var(--card);
 }
