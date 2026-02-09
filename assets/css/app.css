@@ -105,3 +105,23 @@ footer {
   background: #22c55e;
   color: white;
 }
+textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  resize: vertical;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+@media (max-width: 600px) {
+  textarea {
+    min-height: 100px;
+  }
+}
