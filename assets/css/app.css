@@ -1,3 +1,6 @@
+/* =====================
+   RESET & GLOBAL
+===================== */
 * {
   box-sizing: border-box;
   font-family: system-ui, -apple-system, sans-serif;
@@ -5,162 +8,16 @@
 
 body {
   margin: 0;
-  background: var(--bg);
-  color: var(--text);
-}
-
-/* LOGIN */
-.login-page {
   min-height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  background: var(--bg-main);
+  color: var(--text-main);
 }
 
-.login-card {
-  width: 100%;
-  max-width: 360px;
-  background: var(--card);
-  padding: 24px;
-  border-radius: 14px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.08);
-  text-align: center;
-}
-
-.login-card input {
-  width: 100%;
-  padding: 12px;
-  margin: 10px 0;
-}
-
-.login-card button {
-  width: 100%;
-  padding: 12px;
-  background: var(--primary);
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-}
-
-/* ===== LOGIN PAGE FIX ===== */
-.login-container button {
-  background: #2563eb;
-  color: #ffffff;
-  font-weight: 600;
-}
-
-.login-container button:hover {
-  background: #1d4ed8;
-}
-
-/* GENERAL */
-.container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 16px;
-}
-
-.card {
-  background: var(--card);
-  padding: 16px;
-  border-radius: 14px;
-  margin-bottom: 12px;
-}
-
-footer {
-  text-align: center;
-  padding: 12px;
-  font-size: 13px;
-  opacity: .6;
-}
-/* PROGRESS BAR */
-.progress-bar {
-  width: 100%;
-  height: 10px;
-  background: var(--border);
-  border-radius: 10px;
-  margin-top: 8px;
-}
-
-#progressFill {
-  height: 100%;
-  width: 0%;
-  background: var(--primary);
-  border-radius: 10px;
-}
-
-/* OPSI */
-#opsi label {
-  display: block;
-  padding: 10px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  margin-bottom: 8px;
-}
-
-/* GRID SOAL */
-.soal-grid {
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  gap: 6px;
-}
-
-.soal-grid button {
-  padding: 8px;
-  border-radius: 8px;
-  border: none;
-  background: #d1d5db;
-}
-
-.soal-grid button.answered {
-  background: #22c55e;
-  color: white;
-}
-textarea {
-  width: 100%;
-  min-height: 120px;
-  padding: 10px;
-  margin-bottom: 12px;
-  border-radius: 10px;
-  border: 1px solid var(--border);
-  resize: vertical;
-}
-
-textarea:focus {
-  outline: none;
-  border-color: var(--primary);
-}
-
-@media (max-width: 600px) {
-  textarea {
-    min-height: 100px;
-  }
-}
-/* ANIMASI HALUS */
-.card {
-  animation: fadeIn .4s ease;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* BUTTON HOVER */
-button:hover {
-  opacity: .9;
-}
-
-/* IKON MINI (EMOJI BASED) */
-button {
-  cursor: pointer;
-}
+/* =====================
+   LAYOUT
+===================== */
 .container {
   max-width: 960px;
   margin: auto;
@@ -173,50 +30,16 @@ button {
   }
 }
 
+/* =====================
+   CARD / BOX
+===================== */
 .card {
-  border-radius: 14px;
-  padding: 16px;
+  background: var(--bg-card);
+  padding: 18px;
+  border-radius: 16px;
   margin-bottom: 16px;
-  box-shadow: 0 10px 25px rgba(0,0,0,.05);
-}
-.dashboard-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 14px;
-}
-button {
-  border-radius: 10px;
-  padding: 10px 14px;
-  font-size: 14px;
-  transition: .2s ease;
+  box-shadow: 0 10px 25px rgba(0,0,0,.35);
+  animation: fadeIn .4s ease;
 }
 
-button.primary {
-  background: #2563eb;
-  color: #fff;
-}
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-footer {
-  margin-top: auto;
-  padding: 12px;
-  text-align: center;
-  font-size: 13px;
-  opacity: .7;
-}
-
-.mapel {
-  text-align: center;
-  font-weight: 600;
-  cursor: pointer;
-  transition: .2s;
-}
-
-.mapel:hover {
-  transform: translateY(-4px);
-  background: rgba(59,130,246,.15);
-}
+/* =====================
