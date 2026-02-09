@@ -170,7 +170,16 @@ body {
   padding: 12px;
 }
 
-.footer {
+.footer.card {
+  padding: 16px;
+}
+
+@media (max-width: 640px) {
+  .card {
+    padding: 12px;
+    border-radius: 12px;
+  }
+} {
   text-align: center;
   padding: 12px;
   font-size: 0.85rem;
