@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Hasil Ujian | CBT</title>
+
+  <link rel="icon" href="../assets/icons/favicon.ico">
+
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/theme.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+
+<body>
+  <div id="app-header"></div>
+
+  <main class="result">
+    <section class="card result-header">
+      <h2>Hasil Ujian</h2>
+      <p id="userName"></p>
+    </section>
+
+    <section class="card">
+      <h3>Nilai Pilihan Ganda</h3>
+      <div class="score" id="pgScore">-</div>
+    </section>
+
+    <section class="card">
+      <h3>Studi Kasus</h3>
+      <div id="kasusSummary"></div>
+    </section>
+
+    <section class="actions">
+      <button class="btn primary" id="btnPdf">Export PDF</button>
+    </section>
+  </main>
+
+  <div id="app-footer"></div>
+
+  <script type="module" src="../assets/js/app.js"></script>
+  <script type="module" src="../assets/js/result.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</body>
+</html>
