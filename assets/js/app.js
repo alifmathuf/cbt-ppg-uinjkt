@@ -33,3 +33,14 @@ function logout() {
     window.location.href = '../index.html';
   }
 }
+function autoThemeByTime() {
+  const hour = new Date().getHours();
+
+  if (hour >= 18 || hour < 6) {
+    document.body.classList.add('dark');
+  } else {
+    document.body.classList.remove('dark');
+  }
+}
+
+document.addEventListener('DOMContentLoaded', autoThemeByTime);
