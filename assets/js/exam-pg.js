@@ -28,13 +28,9 @@ function requestFullscreen() {
   else if (el.msRequestFullscreen) el.msRequestFullscreen();
 }
 
-document.addEventListener(
-  'click',
-  () => {
-    if (!document.fullscreenElement) requestFullscreen();
-  },
-  { once: true }
-);
+document.addEventListener('click', () => {
+  if (!document.fullscreenElement) requestFullscreen();
+}, { once: true });
 
 document.addEventListener('fullscreenchange', () => {
   if (!document.fullscreenElement) {
@@ -67,18 +63,17 @@ if (!startTime) {
 fetch(`/cbt-web-app/data/${mapel}/${paket}.json`)
   .then(r => r.json())
   .then(data => {
-    soal = shuffle(data)
-      .slice(0, JUMLAH_SOAL)
-      .map(s => {
-        const opsi = shuffle(
-          s.o.map((text, i) => ({ text, i }))
-        );
-        return {
-          q: s.q,
-          opsi,
-          kunci: opsi.findIndex(x => x.i === s.a)
-        };
-      });
+    soal = shuffle(data).slice(0, JUMLAH_SOAL).map(s => {
+      const opsi = shuffle(
+        s.o.map((text, i) => ({ text, i }))
+      );
+
+      return {
+        q: s.q,
+        opsi,
+        kunci: opsi.findIndex(x => x.i === s.a)
+      };
+    });
 
     initGrid();
     tampilSoal();
@@ -145,9 +140,8 @@ function pilih(i) {
   jawaban[index] = i;
   localStorage.setItem('pg_jawaban', JSON.stringify(jawaban));
 
-  document
-    .querySelectorAll('.soal-grid button')
-    [index].classList.add('answered');
+  document.querySelectorAll('.soal-grid button')[index]
+    .classList.add('answered');
 
   if (index === soal.length - 1) {
     document.getElementById('btnSelesai').disabled = false;
@@ -155,7 +149,7 @@ function pilih(i) {
 }
 
 /* ===============================
-   NAVIGASI
+   NAVIGASI (SAVE INDEX)
 ================================ */
 function nextSoal() {
   if (index < soal.length - 1) {
