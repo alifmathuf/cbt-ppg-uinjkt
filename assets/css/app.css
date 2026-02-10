@@ -144,4 +144,59 @@ button:hover {
 button {
   cursor: pointer;
 }
+.mapel-box {
+  padding: 16px;
+  border-radius: 14px;
+  text-align: center;
+  font-weight: 600;
+  background: rgba(255,255,255,.08);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: .25s;
+}
+
+.mapel-box:hover,
+.mapel-box.active {
+  background: rgba(56,189,248,.25);
+  transform: translateY(-4px);
+}
+.btn-start {
+  background: var(--success);
+  color: #fff;
+}
+
+.btn-logout {
+  background: var(--danger);
+  color: #fff;
+}
+
+.card.transparent {
+  background: rgba(255,255,255,.05);
+}
+#greeting {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: .3px;
+  margin-bottom: 12px;
+}
+.btn-nav {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.btn-finish {
+  background: var(--success);
+  color: #fff;
+}
+
+#opsi label {
+  background: rgba(255,255,255,.05);
+  transition: .2s;
+}
+
+#opsi input:checked + label {
+  background: rgba(56,189,248,.25);
+  border-color: var(--primary);
+}
 
