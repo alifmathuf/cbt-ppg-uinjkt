@@ -15,7 +15,7 @@ let waktu = DURASI;
 /* ===============================
    AMBIL PARAMETER
 ================================ */
-const mapel = localStorage.getItem('mapel') || 'qurdist';
+const mapel = localStorage.getItem('mapel') || 'mapel';
 const paket = localStorage.getItem('paket') || 'paket1';
 
 /* ===============================
