@@ -1,55 +1,16 @@
-// ================================
-// CHART HASIL UJIAN CBT
-// ================================
-
-export function renderResultChart(canvasId, benar, salah) {
-  const ctx = document.getElementById(canvasId).getContext("2d");
-
-  // destroy chart lama (kalau reload)
-  if (window.resultChart) {
-    window.resultChart.destroy();
-  }
-
-  window.resultChart = new Chart(ctx, {
-    type: "doughnut",
+export function scoreChart(ctx, data) {
+  return new Chart(ctx, {
+    type: "line",
     data: {
-      labels: ["Benar", "Salah"],
-      datasets: [
-        {
-          data: [benar, salah],
-          backgroundColor: [
-            "#22c55e", // hijau premium
-            "#ef4444"  // merah soft
-          ],
-          borderWidth: 0
-        }
-      ]
+      labels: data.map(d => d.label),
+      datasets: [{
+        data: data.map(d => d.value),
+        tension: .3
+      }]
     },
     options: {
-      responsive: true,
-      maintainAspectRatio: false, // 🔑 biar ikut ukuran card
-      cutout: "65%",               // donut lebih tipis & elegan
-      plugins: {
-        legend: {
-          position: "bottom",
-          labels: {
-            color: "#e5e7eb",
-            boxWidth: 10,
-            padding: 10,
-            font: {
-              size: 6,
-              weight: "500"
-            }
-          }
-        },
-        tooltip: {
-          callbacks: {
-            label: function (ctx) {
-              return `${ctx.label}: ${ctx.parsed}`;
-            }
-          }
-        }
-      }
+      plugins: { legend: false },
+      responsive: true
     }
   });
 }
