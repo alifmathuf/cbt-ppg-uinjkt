@@ -1,94 +1,52 @@
-/* ===============================
-   CONFIG
-================================ */
-const JUMLAH_SOAL = 50;
-const DURASI = 120 * 60; // 120 menit
-
-/* ===============================
-   STATE
-================================ */
 let soal = [];
 let index = 0;
 let jawaban = [];
-let waktu = DURASI;
+let waktu = 120 * 60; // 120 menit
 
-/* ===============================
-   AMBIL PARAMETER
-================================ */
+// AMBIL MAPEL
 const mapel = localStorage.getItem('mapel') || 'qurdist';
-const paket = localStorage.getItem('paket') || 'paket1';
 
-/* ===============================
-   UTIL
-================================ */
-function shuffle(arr) {
-  return arr
-    .map(v => ({ v, r: Math.random() }))
-    .sort((a, b) => a.r - b.r)
-    .map(x => x.v);
-}
-
-/* ===============================
-   LOAD SOAL
-================================ */
-fetch(`/cbt-web-app/data/${mapel}/${paket}.json`)
-  .then(r => r.json())
+// LOAD SOAL
+fetch(`/cbt-web-app/data/${mapel}.json`)
+  .then(res => res.json())
   .then(data => {
-    soal = shuffle(data).slice(0, JUMLAH_SOAL).map(s => {
-      const opsi = shuffle(
-        s.o.map((text, i) => ({ text, i }))
-      );
-
-      return {
-        q: s.q,
-        opsi,
-        kunci: opsi.findIndex(x => x.i === s.a)
-      };
-    });
-
+    soal = data.questions;
     initGrid();
     tampilSoal();
   });
 
-/* ===============================
-   TIMER
-================================ */
+// TIMER
 setInterval(() => {
-  waktu--;
   if (waktu <= 0) selesaiUjian(true);
+  waktu--;
 
   const m = String(Math.floor(waktu / 60)).padStart(2, '0');
   const s = String(waktu % 60).padStart(2, '0');
   document.getElementById('timer').innerText = `${m}:${s}`;
 }, 1000);
 
-/* ===============================
-   RENDER SOAL
-================================ */
+// TAMPIL SOAL
 function tampilSoal() {
-  const s = soal[index];
+  const q = soal[index];
   document.getElementById('noSoal').innerText = `Soal ${index + 1}`;
-  document.getElementById('pertanyaan').innerText = s.q;
+  document.getElementById('pertanyaan').innerText = q.q;
 
-  const wrap = document.getElementById('opsi');
-  wrap.innerHTML = '';
+  const opsi = document.getElementById('opsi');
+  opsi.innerHTML = '';
 
-  s.opsi.forEach((o, i) => {
-    wrap.innerHTML += `
+  q.options.forEach((o, i) => {
+    const checked = jawaban[index] === i ? 'checked' : '';
+    opsi.innerHTML += `
       <label>
-        <input type="radio" name="opsi"
-          ${jawaban[index] === i ? 'checked' : ''}
-          onchange="pilih(${i})">
-        ${o.text}
+        <input type="radio" name="opsi" ${checked}
+          onchange="pilih(${i})"> ${o}
       </label>`;
   });
 
   updateProgress();
 }
 
-/* ===============================
-   JAWAB
-================================ */
+// PILIH JAWABAN
 function pilih(i) {
   jawaban[index] = i;
   document.querySelectorAll('.soal-grid button')[index]
@@ -99,9 +57,7 @@ function pilih(i) {
   }
 }
 
-/* ===============================
-   NAVIGASI
-================================ */
+// NAVIGASI
 function nextSoal() {
   if (index < soal.length - 1) {
     index++;
@@ -116,13 +72,10 @@ function prevSoal() {
   }
 }
 
-/* ===============================
-   GRID
-================================ */
+// GRID
 function initGrid() {
   const grid = document.getElementById('soalGrid');
   grid.innerHTML = '';
-
   soal.forEach((_, i) => {
     const b = document.createElement('button');
     b.innerText = i + 1;
@@ -134,9 +87,7 @@ function initGrid() {
   });
 }
 
-/* ===============================
-   PROGRESS
-================================ */
+// PROGRESS
 function updateProgress() {
   const done = jawaban.filter(v => v !== undefined).length;
   document.getElementById('progressText').innerText =
@@ -145,26 +96,9 @@ function updateProgress() {
     `${(done / soal.length) * 100}%`;
 }
 
-/* ===============================
-   SELESAI & SKOR
-================================ */
+// SELESAI
 function selesaiUjian(auto = false) {
   if (!auto && !confirm('Yakin ingin menyelesaikan ujian?')) return;
-
-  let benar = 0;
-  soal.forEach((s, i) => {
-    if (jawaban[i] === s.kunci) benar++;
-  });
-
-  const hasil = {
-    benar,
-    total: soal.length,
-    nilai: Math.round((benar / soal.length) * 100)
-  };
-
-  console.log('HASIL PG:', hasil); // DEBUG
-
-  localStorage.setItem('hasilPG', JSON.stringify(hasil));
-
+  localStorage.setItem('jawabanPG', JSON.stringify(jawaban));
   window.location.href = '/cbt-web-app/pages/result.html';
 }
