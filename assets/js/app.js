@@ -31,3 +31,11 @@ function greetingByTime() {
 
   return `Assalaamualaikum, selamat ${waktu}`;
 }
+document.addEventListener('DOMContentLoaded', () => {
+  const user = JSON.parse(localStorage.getItem('user'));
+  const greetEl = document.getElementById('greeting');
+
+  if (greetEl && user) {
+    greetEl.textContent = `${greetingByTime()}, ${user.nama}`;
+  }
+});
