@@ -12,46 +12,36 @@
 
 <main class="container">
 
-  <div class="card" style="text-align:center">
-    <h2>Hasil Ujian</h2>
-    <p id="namaPeserta">-</p>
-  </div>
-
- <div class="card result-card">
+<div class="card">
   <h3>Hasil Ujian</h3>
 
   <div class="score-ring">
     <div class="ring">
-      <span class="score">78</span>
+      <div class="score">78</div>
       <small>Nilai</small>
     </div>
   </div>
 
   <div class="result-actions">
-    <button class="btn-secondary">Kembali ke Dashboard</button>
-    <button class="btn-secondary">Export PDF</button>
+    <button class="btn-back">Kembali ke Dashboard</button>
+    <button class="btn-export">Export PDF</button>
   </div>
 </div>
-
- 
-
+<div class="card">
+  <h3>Hasil Pilihan Ganda</h3>
+  <p>Jawaban Benar: 0</p>
+  <p>Total Soal: 50</p>
+  <p>Nilai: 0</p>
+  <p class="status-fail">✖ BELUM LULUS PG</p>
 </div>
 
-  </div>
+<div class="card">
+  <h3>Hasil Studi Kasus</h3>
+  <p>Jenis: LKPD</p>
+  <p>Total Kata: 1000</p>
+  <p>Total Karakter: 7020</p>
+</div>
 
-  <div class="card">
-    <p>Jawaban Benar: <b id="benar">0</b></p>
-    <p>Total Soal: <b id="total">0</b></p>
-    <p>Nilai: <b id="nilai">0</b></p>
-    <p id="status"></p>
-  </div>
-<div id="caseResult"></div>
-
-  <div class="card">
-    <button onclick="kembali()">Kembali ke Dashboard</button>
-    <button onclick="exportPDF()">Export PDF</button>
-
-  </div>
 
 </main>
 
