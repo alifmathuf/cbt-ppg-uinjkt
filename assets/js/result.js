@@ -73,32 +73,33 @@ function exportPDF() {
   doc.text('HASIL UJIAN CBT', 20, y);
   y += 10;
 
+  const user = JSON.parse(localStorage.getItem('user'));
+  const hasilPG = JSON.parse(localStorage.getItem('hasilPG'));
+  const hasilCase = JSON.parse(localStorage.getItem('hasilCase'));
+
   doc.setFontSize(11);
-  doc.text(`Nama: ${user.nama}`, 20, y); y += 7;
-  doc.text(`Kelas: ${user.kelas}`, 20, y); y += 10;
+  doc.text(`Nama: ${user?.nama || '-'}`, 20, y); y += 6;
+  doc.text(`Kelas: ${user?.kelas || '-'}`, 20, y); y += 10;
 
   if (hasilPG) {
-    doc.text('Pilihan Ganda', 20, y); y += 7;
-    doc.text(`Benar: ${hasilPG.benar}`, 25, y); y += 6;
-    doc.text(`Total: ${hasilPG.total}`, 25, y); y += 6;
+    doc.text('Pilihan Ganda', 20, y); y += 6;
     doc.text(`Nilai: ${hasilPG.nilai}`, 25, y); y += 10;
   }
 
   if (hasilCase) {
-    doc.text('Studi Kasus', 20, y); y += 7;
-    doc.text(`Jenis: ${hasilCase.jenis}`, 25, y); y += 6;
-
-    let totalKata = 0;
-    let totalKarakter = 0;
+    let kata = 0;
+    let karakter = 0;
 
     hasilCase.jawaban.forEach(t => {
-      totalKarakter += t.length;
-      totalKata += t.trim().split(/\s+/).filter(Boolean).length;
+      karakter += t.length;
+      kata += t.trim().split(/\s+/).filter(Boolean).length;
     });
 
-    doc.text(`Total Kata: ${totalKata}`, 25, y); y += 6;
-    doc.text(`Total Karakter: ${totalKarakter}`, 25, y); y += 10;
+    doc.text('Studi Kasus', 20, y); y += 6;
+    doc.text(`Jenis: ${hasilCase.jenis}`, 25, y); y += 6;
+    doc.text(`Total Kata: ${kata}`, 25, y); y += 6;
+    doc.text(`Total Karakter: ${karakter}`, 25, y);
   }
 
-  doc.save(`hasil_${user.nama}.pdf`);
+  doc.save(`hasil_${user?.nama || 'peserta'}.pdf`);
 }
