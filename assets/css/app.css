@@ -319,6 +319,31 @@ body {
   color: white;
 }
 
+/* =====================
+   STUDI KASUS
+===================== */
+textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 12px;
+  background: var(--bg-soft);
+  color: var(--text-main);
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  resize: vertical;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+@media (max-width: 600px) {
+  textarea {
+    min-height: 100px;
+  }
+}
+
 /* ==================================================
    SCORE RING (RESULT)
 ================================================== */
