@@ -156,15 +156,11 @@ function selesaiUjian(auto = false) {
     if (jawaban[i] === s.kunci) benar++;
   });
 
-  const hasil = {
+  localStorage.setItem('hasilPG', JSON.stringify({
     benar,
     total: soal.length,
     nilai: Math.round((benar / soal.length) * 100)
-  };
-
-  console.log('HASIL PG:', hasil); // DEBUG
-
-  localStorage.setItem('hasilPG', JSON.stringify(hasil));
+  }));
 
   window.location.href = '/cbt-web-app/pages/result.html';
 }
