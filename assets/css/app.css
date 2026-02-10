@@ -7,12 +7,10 @@
 }
 
 body {
-    background: var(--bg);
-  color: var(--text);
   margin: 0;
   min-height: 100vh;
-  background: linear-gradient(135deg, #0f172a, #134e6f, #0891b2);
-  color: #e5e7eb;
+  background: var(--bg);
+  color: var(--text);
   display: flex;
   flex-direction: column;
 }
@@ -25,52 +23,52 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px;
 }
 
 .login-card {
   width: 100%;
-  max-width: 360px;
-  background: rgba(255,255,255,0.12);
-  backdrop-filter: blur(10px);
-  padding: 26px;
-  border-radius: 18px;
-  box-shadow: 0 20px 40px rgba(0,0,0,.35);
+  max-width: 380px;
+  background: var(--card);
+  box-shadow: var(--card-shadow);
+  padding: 28px;
+  border-radius: 20px;
   text-align: center;
 }
 
 .login-card h1 {
   margin-bottom: 6px;
+  color: var(--text-dark);
 }
 
 .login-card p {
-  opacity: .85;
-  margin-bottom: 16px;
+  color: #475569;
+  margin-bottom: 18px;
 }
 
 .login-card input {
   width: 100%;
-  padding: 12px 14px;
+  padding: 14px;
   margin: 10px 0;
-  border-radius: 10px;
-  border: none;
-  outline: none;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
 }
 
 .login-card button {
   width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  background: rgba(255,255,255,0.25);
+  padding: 14px;
+  margin-top: 14px;
+  background: linear-gradient(135deg, #0f172a, #0891b2);
   color: #ffffff;
-  border: 1px solid rgba(255,255,255,0.3);
-  border-radius: 12px;
+  border: none;
+  border-radius: 14px;
   font-weight: 600;
   cursor: pointer;
   transition: .25s ease;
 }
 
 .login-card button:hover {
-  background: rgba(255,255,255,0.4);
+  opacity: .9;
 }
 
 /* =========================
@@ -78,46 +76,128 @@ body {
 ========================= */
 .container {
   max-width: 1100px;
-  margin: auto;
-  padding: 16px;
+  margin: 0 auto;
+  padding: 24px 16px;
   width: 100%;
 }
 
 .card {
-   
   background: var(--card);
-  backdrop-filter: blur(12px);
-  background: rgba(255,255,255,0.12);
-  backdrop-filter: blur(8px);
-  padding: 18px;
-  border-radius: 18px;
-  margin-bottom: 16px;
-  box-shadow: 0 10px 25px rgba(0,0,0,.25);
+  color: var(--text-dark);
+  box-shadow: var(--card-shadow);
+  padding: 22px;
+  border-radius: 20px;
+  margin-bottom: 20px;
   animation: fadeIn .4s ease;
+}
+
+/* =========================
+   GREETING
+========================= */
+.greeting-card {
+  text-align: center;
+}
+
+#greeting {
+  margin: 0;
+  font-size: 24px;
+}
+
+#userInfo {
+  margin-top: 6px;
+  color: #475569;
 }
 
 /* =========================
    DASHBOARD MAPEL
 ========================= */
-.dashboard-grid {
+.mapel-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 18px;
+  margin-top: 12px;
 }
 
-.mapel {
-  text-align: center;
-  padding: 14px;
+.mapel-box {
+  padding: 18px;
+  font-size: 16px;
   font-weight: 600;
-  border-radius: 14px;
-  background: rgba(255,255,255,0.18);
+  border-radius: 16px;
+  background: rgba(255,255,255,0.85);
+  border: 1px solid rgba(15,23,42,0.15);
   cursor: pointer;
   transition: .25s ease;
 }
 
-.mapel:hover {
-  background: rgba(34,211,238,0.35);
+.mapel-box:hover {
+  background: linear-gradient(135deg, #0f172a, #0891b2);
+  color: #ffffff;
   transform: translateY(-4px);
+}
+
+/* =========================
+   TIPE UJIAN
+========================= */
+.tipe-ujian {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.tipe-box {
+  flex: 1;
+  text-align: center;
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.85);
+  border: 1px solid rgba(15,23,42,0.15);
+  cursor: pointer;
+  font-weight: 600;
+  transition: .25s ease;
+}
+
+.tipe-box input {
+  display: none;
+}
+
+.tipe-box:hover,
+.tipe-box:has(input:checked) {
+  background: linear-gradient(135deg, #0f172a, #0891b2);
+  color: #ffffff;
+  border-color: transparent;
+}
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin: 30px 0;
+}
+
+.btn-start {
+  padding: 14px 32px;
+  border-radius: 18px;
+  font-size: 16px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-logout {
+  padding: 14px 32px;
+  border-radius: 18px;
+  font-size: 16px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
 }
 
 /* =========================
@@ -126,7 +206,7 @@ body {
 .progress-bar {
   width: 100%;
   height: 10px;
-  background: rgba(255,255,255,0.25);
+  background: #e5e7eb;
   border-radius: 20px;
   margin-top: 10px;
 }
@@ -136,126 +216,38 @@ body {
   width: 0%;
   background: linear-gradient(90deg, #22d3ee, #0891b2);
   border-radius: 20px;
-  transition: width .3s ease;
 }
 
 /* =========================
-   SOAL & OPSI JAWABAN
+   SOAL & OPSI
 ========================= */
 .soal-box,
 .card.soal {
-  background: rgba(255,255,255,0.92);
+  background: rgba(255,255,255,0.95);
   color: #0f172a;
-  border-radius: 18px;
-  padding: 18px;
+  border-radius: 20px;
+  padding: 22px;
 }
 
 #opsi label {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  display: block;
   background: rgba(255,255,255,0.95);
   color: #0f172a;
-  padding: 14px;
-  border-radius: 14px;
-  margin-bottom: 12px;
+  padding: 16px;
+  border-radius: 16px;
+  margin-bottom: 14px;
   cursor: pointer;
+  border: 1px solid rgba(15,23,42,0.12);
   transition: .25s ease;
-  border: 1px solid rgba(0,0,0,.08);
 }
 
 #opsi label:hover {
   background: rgba(34,211,238,0.15);
 }
 
-#opsi input[type="radio"] {
-  accent-color: #0891b2;
-}
-
 #opsi label:has(input:checked) {
   background: linear-gradient(135deg, #0f172a, #0891b2);
   color: #ffffff;
-  border-color: transparent;
-}
-
-/* =========================
-   NAVIGASI SOAL (TENGAH)
-========================= */
-.nav-soal {
-  display: flex;
-  justify-content: center;
-  gap: 14px;
-  margin: 20px 0;
-}
-
-.nav-soal button {
-  padding: 12px 26px;
-  border-radius: 14px;
-  font-size: 15px;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-  transition: .25s ease;
-}
-
-/* Sebelumnya & Selanjutnya */
-.nav-soal .btn-nav {
-  background: rgba(255,255,255,0.85);
-  color: #0f172a;
-}
-
-.nav-soal .btn-nav:hover {
-  background: rgba(34,211,238,0.35);
-}
-
-/* Tombol Selesai */
-.nav-soal .btn-finish {
-  background: linear-gradient(135deg, #22c55e, #16a34a);
-  color: #ffffff;
-}
-
-.nav-soal .btn-finish:hover {
-  opacity: .9;
-}
-
-/* =========================
-   GRID NOMOR SOAL
-========================= */
-.soal-grid {
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  gap: 8px;
-}
-
-.soal-grid button {
-  padding: 10px;
-  border-radius: 12px;
-  border: none;
-  font-weight: 600;
-  background: rgba(255,255,255,0.85);
-  color: #0f172a;
-}
-
-.soal-grid button.answered {
-  background: linear-gradient(135deg, #22c55e, #16a34a);
-  color: white;
-}
-
-/* =========================
-   TEXTAREA STUDI KASUS
-========================= */
-textarea {
-  width: 100%;
-  min-height: 120px;
-  padding: 12px;
-  border-radius: 14px;
-  border: 1px solid rgba(0,0,0,.15);
-  resize: vertical;
-}
-
-textarea:focus {
-  outline: none;
-  border-color: #0891b2;
 }
 
 /* =========================
@@ -264,7 +256,7 @@ textarea:focus {
 footer {
   margin-top: auto;
   text-align: center;
-  padding: 14px;
+  padding: 16px;
   font-size: 13px;
   opacity: .75;
 }
@@ -287,11 +279,11 @@ footer {
    RESPONSIVE
 ========================= */
 @media (max-width: 600px) {
-  .soal-grid {
-    grid-template-columns: repeat(5, 1fr);
+  .mapel-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .nav-soal button {
-    padding: 12px 20px;
+  .action-buttons {
+    flex-direction: column;
   }
 }
