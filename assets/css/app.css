@@ -175,7 +175,7 @@ body {
   background: linear-gradient(135deg, #16a34a, #15803d);
 }
 
-* =========================
+/* =========================
    ACTION BUTTONS
 ========================= */
 .action-buttons {
@@ -186,10 +186,10 @@ body {
 }
 
 .btn-start {
-  padding: 14px 36px;
+  padding: 14px 32px;
   border-radius: 18px;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
   background: linear-gradient(135deg, #22c55e, #16a34a);
   color: #ffffff;
   border: none;
@@ -197,10 +197,10 @@ body {
 }
 
 .btn-logout {
-  padding: 14px 36px;
+  padding: 14px 32px;
   border-radius: 18px;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
   background: linear-gradient(135deg, #ef4444, #dc2626);
   color: #ffffff;
   border: none;
