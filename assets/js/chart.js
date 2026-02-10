@@ -34,10 +34,10 @@ export function renderResultChart(canvasId, benar, salah) {
           position: "bottom",
           labels: {
             color: "#e5e7eb",
-            boxWidth: 14,
-            padding: 16,
+            boxWidth: 10,
+            padding: 10,
             font: {
-              size: 12,
+              size: 6,
               weight: "500"
             }
           }
