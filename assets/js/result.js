@@ -1,105 +1,61 @@
-const user = JSON.parse(localStorage.getItem('cbtUser'));
+// Gunakan satu kunci yang konsisten: 'cbtUser'
+const userData = JSON.parse(localStorage.getItem('cbtUser'));
 const hasilPG = JSON.parse(localStorage.getItem('hasilPG'));
 const hasilCase = JSON.parse(localStorage.getItem('hasilCase'));
 
-if (!user || (!hasilPG && !hasilCase)) {
-  alert('Data hasil tidak ditemukan');
+// Validasi data
+if (!userData) {
+  alert('Data user tidak ditemukan, silakan login kembali');
   window.location.href = '/cbt-web-app/index.html';
 }
 
-// USER
-document.getElementById('namaPeserta').innerText =
-  `${user.nama} (${user.kelas})`;
+// 1. MENAMPILKAN NAMA (Pastikan ID di HTML adalah 'namaPeserta')
+if (document.getElementById('namaPeserta')) {
+  document.getElementById('namaPeserta').innerText = `${userData.nama} (${userData.kelas})`;
+}
 
-// ===== PG =====
+// 2. UPDATE SKOR PG
 if (hasilPG) {
-  document.getElementById('benar').innerText = hasilPG.benar;
-  document.getElementById('total').innerText = hasilPG.total;
-  document.getElementById('nilai').innerText = hasilPG.nilai;
-  document.getElementById('status').innerText =
-    hasilPG.nilai >= 75 ? '✅ LULUS PG' : '❌ BELUM LULUS PG';
+  const nilaiAngka = hasilPG.nilai || 0;
+  
+  // Update teks skor
+  if(document.getElementById('nilai')) document.getElementById('nilai').innerText = nilaiAngka;
+  if(document.getElementById('benar')) document.getElementById('benar').innerText = hasilPG.benar;
+  if(document.getElementById('total')) document.getElementById('total').innerText = hasilPG.total;
 
-  const ctx = document.getElementById('chartNilai');
-  new Chart(ctx, {
-    type: 'doughnut',
-    data: {
-      labels: ['Benar', 'Salah'],
-      datasets: [{
-        data: [hasilPG.benar, hasilPG.total - hasilPG.benar]
-      }]
-    },
-    options: {
-      plugins: { legend: { position: 'bottom' } }
-    }
-  });
+  // UPDATE RING SKOR SECARA DINAMIS
+  const ringElement = document.querySelector('.ring');
+  if (ringElement) {
+    // Mengubah background conic-gradient sesuai nilai
+    ringElement.style.background = `conic-gradient(#22c55e 0% ${nilaiAngka}%, rgba(255,255,255,.15) ${nilaiAngka}%)`;
+  }
+
+  // Status Lulus
+  const statusEl = document.getElementById('status');
+  if(statusEl) {
+    statusEl.innerText = nilaiAngka >= 75 ? '✅ LULUS PG' : '❌ BELUM LULUS PG';
+  }
 }
 
-// ===== STUDI KASUS (RINGKAS) =====
-if (hasilCase) {
-  const wrap = document.getElementById('caseResult');
-
-  let totalKata = 0;
-  let totalKarakter = 0;
-
-  hasilCase.jawaban.forEach(teks => {
-    totalKarakter += teks.length;
-    totalKata += teks.trim().split(/\s+/).filter(Boolean).length;
-  });
-
-  wrap.innerHTML = `
-    <div class="card">
-      <h3>Hasil Studi Kasus</h3>
-      <p><b>Jenis:</b> ${hasilCase.jenis}</p>
-      <p><b>Total Kata:</b> ${totalKata}</p>
-      <p><b>Total Karakter:</b> ${totalKarakter}</p>
-    </div>
-  `;
-}
-
-
-function kembali() {
-  window.location.href = '/cbt-web-app/pages/dashboard.html';
-}
-function exportPDF() {
-  alert('Export PDF akan diaktifkan di step berikutnya');
-}
+// Fungsi Export PDF (Sudah disamakan kuncinya)
 function exportPDF() {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
-
   let y = 20;
 
   doc.setFontSize(14);
   doc.text('HASIL UJIAN CBT', 20, y);
   y += 10;
 
-  const user = JSON.parse(localStorage.getItem('user'));
-  const hasilPG = JSON.parse(localStorage.getItem('hasilPG'));
-  const hasilCase = JSON.parse(localStorage.getItem('hasilCase'));
-
+  // Gunakan 'userData' yang sudah diambil di atas
   doc.setFontSize(11);
-  doc.text(`Nama: ${user?.nama || '-'}`, 20, y); y += 6;
-  doc.text(`Kelas: ${user?.kelas || '-'}`, 20, y); y += 10;
+  doc.text(`Nama: ${userData?.nama || '-'}`, 20, y); y += 6;
+  doc.text(`Kelas: ${userData?.kelas || '-'}`, 20, y); y += 10;
 
   if (hasilPG) {
     doc.text('Pilihan Ganda', 20, y); y += 6;
     doc.text(`Nilai: ${hasilPG.nilai}`, 25, y); y += 10;
   }
-
-  if (hasilCase) {
-    let kata = 0;
-    let karakter = 0;
-
-    hasilCase.jawaban.forEach(t => {
-      karakter += t.length;
-      kata += t.trim().split(/\s+/).filter(Boolean).length;
-    });
-
-    doc.text('Studi Kasus', 20, y); y += 6;
-    doc.text(`Jenis: ${hasilCase.jenis}`, 25, y); y += 6;
-    doc.text(`Total Kata: ${kata}`, 25, y); y += 6;
-    doc.text(`Total Karakter: ${karakter}`, 25, y);
-  }
-
-  doc.save(`hasil_${user?.nama || 'peserta'}.pdf`);
+  
+  doc.save(`hasil_${userData?.nama || 'peserta'}.pdf`);
 }
