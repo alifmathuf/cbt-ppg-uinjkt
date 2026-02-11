@@ -561,19 +561,6 @@ textarea:focus {
     flex: 1 1 100%;
   }
 }
-/* Wrapper agar bisa scroll horizontal di HP */
-.table-wrapper {
-  overflow-x: auto;
-}
-
-/* Supaya teks panjang tidak merusak layout */
-.review-table td {
-  word-wrap: break-word;
-  white-space: normal;
-}
-
-/* Khusus HP */
-@media (max-width: 768px) {
 
   .review-table {
     font-size: 13px;
