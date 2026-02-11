@@ -561,6 +561,29 @@ textarea:focus {
     flex: 1 1 100%;
   }
 }
+/* Wrapper agar bisa scroll horizontal di HP */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+/* Supaya teks panjang tidak merusak layout */
+.review-table td {
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+/* Khusus HP */
+@media (max-width: 768px) {
+
+  .review-table {
+    font-size: 13px;
+  }
+
+  .review-table th,
+  .review-table td {
+    padding: 8px;
+  }
+}
 
 .review-table {
   width: 100%;
@@ -579,7 +602,23 @@ textarea:focus {
   background: var(--bg-soft);
   color: var(--text-main);
 }
+.badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
 
+.badge-success {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.badge-danger {
+  background: #fee2e2;
+  color: #991b1b;
+}
 /* ===============================
    BUTTON SYSTEM (GLOBAL)
 ================================ */
