@@ -65,11 +65,16 @@ async function pilihPaket(p) {
     const response = await fetch(filePath);
 
     if (!response.ok) {
-      alert("Mohon maaf, paket soal belum tersedia.");
-      return;
+      throw new Error("File tidak ditemukan");
     }
 
-    // Jika file ada
+    const data = await response.json();
+
+    if (!data || data.length === 0) {
+      throw new Error("Data kosong");
+    }
+
+    // Jika sampai sini berarti valid
     selectedPaket = paketName;
     localStorage.setItem('paket', selectedPaket);
 
