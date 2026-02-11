@@ -364,14 +364,16 @@ body {
 }
 
 /* =====================
-   STUDI KASUS
+   STUDI KASUS (IMPROVED & SCOPED)
 ===================== */
+
+/* default textarea tetap dipakai di halaman lain */
 textarea {
   width: 100%;
   min-height: 120px;
   padding: 12px;
   background: var(--bg-soft);
-  color: #000;
+  color: var(--text-main);
   border-radius: 10px;
   border: 1px solid var(--border);
   resize: vertical;
@@ -382,6 +384,7 @@ textarea:focus {
   border-color: var(--primary);
 }
 
+/* KHUSUS HALAMAN STUDI KASUS */
 .exam-case textarea {
   background: rgba(255,255,255,0.95);
   color: #0f172a;
@@ -395,6 +398,13 @@ textarea:focus {
 .exam-case textarea:focus {
   border-color: #22c55e;
 }
+
+@media (max-width: 600px) {
+  .exam-case textarea {
+    min-height: 130px;
+  }
+}
+
 /* ==================================================
    EXAM CASE – UI PATCH (SAFE)
 ================================================== */
