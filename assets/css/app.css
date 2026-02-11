@@ -492,9 +492,6 @@ textarea:focus {
   opacity: .5;
 }
 
-
-
-
 @media (max-width: 600px) {
   textarea {
     min-height: 100px;
@@ -537,19 +534,34 @@ textarea:focus {
 }
 /* ================= ACTION BUTTONS ================= */
 .action-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
+/* Default (Laptop/Tablet besar) */
 .action-buttons button {
-    flex: 1 1 200px;
-    padding: 12px 16px;
-    font-size: 15px;
-    border-radius: 8px;
-    min-width: 140px;
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 15px;
 }
+
+/* ================= HP ================= */
+@media (max-width: 600px) {
+
+  /* 2 tombol atas sejajar */
+  .action-buttons button:nth-child(1),
+  .action-buttons button:nth-child(2) {
+    flex: 1 1 48%;
+  }
+
+  /* Tombol Export full lebar */
+  .action-buttons button:nth-child(3) {
+    flex: 1 1 100%;
+  }
+}
+
 .review-table {
   width: 100%;
   border-collapse: collapse;
