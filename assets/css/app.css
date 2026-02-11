@@ -567,11 +567,7 @@ textarea:focus {
   background: var(--bg-soft);
   color: var(--text-main);
 }
-@media (max-width: 480px) {
-  .nav-soal button,
-  .result-actions button {
-    min-width: 100%;
-  }
+
 /* ===============================
    BUTTON SYSTEM (GLOBAL)
 ================================ */
