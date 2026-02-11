@@ -297,7 +297,16 @@ body {
   letter-spacing: .3px;
    transition: transform .25s ease, opacity .25s ease;
 }
-
+#timer {
+  font-size: 20px;
+  font-weight: 700;
+  color: #22c55e;
+}
+.exam-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 /* ==================================================
    PROGRESS BAR
 ================================================== */
@@ -316,7 +325,9 @@ body {
   border-radius: 20px;
   transition: width .3s ease;
 }
-
+@media (max-width: 480px) {
+  .soal-grid { grid-template-columns: repeat(4, 1fr); }
+}
 /* ==================================================
    SOAL & OPSI JAWABAN
 ================================================== */
