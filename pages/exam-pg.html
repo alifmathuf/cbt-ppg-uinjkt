@@ -15,17 +15,14 @@
   <!-- HEADER -->
   <div class="card">
     <div style="display:flex;justify-content:space-between;align-items:center;">
-  <div class="exam-topbar">
-  <div class="exam-top-info">
-    <div id="timer">120:00</div>
-    <div class="progress-text">0 / 50</div>
+      <div id="timer">120:00</div>
+      <div id="progressText">0 / 50</div>
+    </div>
+    <div class="progress-bar">
+      <div id="progressFill"></div>
+    </div>
   </div>
 
-  <div class="progress">
-    <div id="progressBar"></div>
-  </div>
-</div>
-</div>
   <!-- SOAL -->
   <div class="card">
     <h3 id="noSoal">Soal 1</h3>
@@ -36,13 +33,11 @@
 
  <!-- NAVIGASI -->
 <div class="card nav-soal">
-  <button class="btn-nav">
-  <i class="fa-solid fa-arrow-left"></i> Sebelumnya
-</button>
-
-<button class="btn-nav">
-  Selanjutnya <i class="fa-solid fa-arrow-right"></i>
-</button>
+  <button class="btn-nav" onclick="prevSoal()">Sebelumnya</button>
+  <button class="btn-nav" onclick="nextSoal()">Selanjutnya</button>
+  <button id="btnSelesai" class="btn-finish" onclick="selesaiUjian()" disabled>
+    Selesai
+  </button>
 </div>
 
 
