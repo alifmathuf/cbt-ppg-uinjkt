@@ -373,7 +373,7 @@ textarea {
   min-height: 120px;
   padding: 12px;
   background: var(--bg-soft);
-  color: var(--text-main);
+  color: #000;
   border-radius: 10px;
   border: 1px solid var(--border);
   resize: vertical;
