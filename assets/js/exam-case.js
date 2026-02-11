@@ -173,3 +173,31 @@ function selesai(auto = false) {
 
   window.location.href = '/cbt-web-app/pages/result.html';
 }
+function exportCasePDF() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  const data = JSON.parse(localStorage.getItem('hasilCase'));
+
+  if (!data) {
+    alert('Jawaban studi kasus belum tersedia');
+    return;
+  }
+
+  let y = 10;
+  doc.setFontSize(14);
+  doc.text(`Studi Kasus: ${data.jenis}`, 10, y);
+  y += 10;
+
+  doc.setFontSize(11);
+
+  data.jawaban.forEach((jawab, i) => {
+    doc.text(`Pertanyaan ${i + 1}`, 10, y);
+    y += 7;
+
+    doc.text(jawab || '-', 10, y, { maxWidth: 180 });
+    y += 20;
+  });
+
+  doc.save(`studi-kasus-${data.jenis}.pdf`);
+}
