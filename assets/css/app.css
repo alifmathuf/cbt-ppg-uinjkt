@@ -516,3 +516,30 @@ footer {
   background: #f8fafc;
   color: #0f172a;
 }
+.leaderboard-card {
+  margin-top: 12px;
+}
+
+.leaderboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.leaderboard-table th,
+.leaderboard-table td {
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+.leaderboard-table th {
+  background: #f8fafc;
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.leaderboard-table tr:nth-child(1) td {
+  font-weight: 700;
+  color: #16a34a;
+}
