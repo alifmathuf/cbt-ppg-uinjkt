@@ -13,30 +13,36 @@
 <main class="container">
 
   <!-- HEADER -->
-  <div class="card">
-    <div style="display:flex;justify-content:space-between;align-items:center;">
-      <div id="timer">30:00</div>
-      <div id="judulKasus"></div>
-    </div>
-    <div class="progress-bar">
-      <div id="progressFill"></div>
-    </div>
+<div class="card exam-header">
+  <div class="exam-top">
+    <div id="timer" class="exam-timer">30:00</div>
+    <div id="judulKasus" class="exam-title"></div>
   </div>
 
-  <!-- SOAL -->
-  <div class="card">
-    <h3 id="judulPertanyaan"></h3>
-
-    <textarea id="jawaban"></textarea>
-    <small id="counter">0 / 150 kata</small>
+  <div class="progress-bar">
+    <div id="progressFill"></div>
   </div>
+</div>
+
+ <!-- SOAL -->
+<div class="card">
+  <h3 id="judulPertanyaan" class="exam-question"></h3>
+
+  <textarea id="jawaban" class="exam-answer"
+    placeholder="Tuliskan jawaban Anda secara runtut dan jelas..."></textarea>
+
+  <small id="counter" class="word-counter">0 / 150 kata</small>
+</div>
 
   <!-- NAV -->
-  <div class="card">
-    <div class="case-actions">
-    <button onclick="next()">Simpan & Lanjut</button>
-    <button id="btnSelesai" onclick="selesai()" disabled>Selesai</button>
+<div class="card">
+  <div class="case-actions exam-actions">
+    <button class="btn-next" onclick="next()">Simpan & Lanjut</button>
+    <button class="btn-finish" id="btnSelesai" onclick="selesai()" disabled>
+      Selesai
+    </button>
   </div>
+</div>
 
 </main>
 
