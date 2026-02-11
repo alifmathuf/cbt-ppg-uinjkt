@@ -383,13 +383,17 @@ textarea:focus {
 }
 
 /* ==================================================
-   EXAM CASE – UI PATCH (SAFE)
+   STUDI KASUS – FINAL PATCH
 ================================================== */
 
+/* Header exam */
 .exam-header {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  background: linear-gradient(
+    135deg,
+    rgba(15,23,42,.75),
+    rgba(8,145,178,.55)
+  );
+  border-radius: 22px;
 }
 
 .exam-top {
@@ -399,56 +403,62 @@ textarea:focus {
 }
 
 .exam-timer {
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 22px;
+  font-weight: 800;
   color: #22c55e;
+  letter-spacing: .5px;
 }
 
 .exam-title {
   font-size: 15px;
   font-weight: 600;
   text-align: right;
+  max-width: 65%;
+  line-height: 1.4;
 }
 
+/* Pertanyaan */
 .exam-question {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 12px;
-  line-height: 1.5;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.55;
+  margin-bottom: 14px;
 }
 
+/* Textarea studi kasus */
 .exam-answer {
-  width: 100%;
-  min-height: 140px;
-  padding: 14px;
-  border-radius: 14px;
-  border: 2px solid rgba(255,255,255,.25);
-  background: rgba(255,255,255,.9);
+  background: rgba(255,255,255,0.95);
+  color: #0f172a;
+  border-radius: 16px;
+  padding: 16px;
   font-size: 14px;
+  line-height: 1.6;
+  border: 2px solid rgba(0,0,0,.08);
 }
 
 .exam-answer:focus {
-  outline: none;
   border-color: #22c55e;
 }
 
+/* Counter */
 .word-counter {
-  display: block;
-  text-align: right;
   margin-top: 6px;
+  text-align: right;
   font-size: 13px;
-  opacity: .85;
+  font-weight: 600;
+  opacity: .8;
 }
 
+/* Tombol */
 .exam-actions {
   display: flex;
-  gap: 14px;
+  gap: 16px;
 }
 
 .exam-actions button {
   flex: 1;
-  padding: 14px;
-  border-radius: 16px;
+  padding: 15px;
+  border-radius: 18px;
   font-size: 15px;
   font-weight: 700;
   border: none;
@@ -461,12 +471,12 @@ textarea:focus {
 }
 
 .btn-finish {
-  background: linear-gradient(135deg, #94a3b8, #64748b);
+  background: linear-gradient(135deg, #64748b, #475569);
   color: #fff;
 }
 
 .btn-finish:disabled {
-  opacity: .5;
+  opacity: .45;
 }
 
 
