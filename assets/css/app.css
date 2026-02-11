@@ -512,3 +512,7 @@ footer {
   font-weight: 700;
   text-align: left;
 }
+.review-table thead th {
+  background: #f8fafc;
+  color: #0f172a;
+}
