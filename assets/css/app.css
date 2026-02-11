@@ -387,7 +387,7 @@ textarea:focus {
 /* KHUSUS HALAMAN STUDI KASUS */
 .exam-case textarea {
   background: rgba(255,255,255,0.95);
-  color: #0f172a;
+  color: #000;
   border-radius: 16px;
   padding: 16px;
   font-size: 14px;
