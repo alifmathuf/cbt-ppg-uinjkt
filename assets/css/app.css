@@ -407,10 +407,6 @@ textarea:focus {
 /* ==================================================
    RESULT / SCORE RING (BUG FIXED)
 ================================================== */
-.result-card {
-  text-align: center;
-}
-
 .score-ring {
   display: flex;
   justify-content: center;
@@ -467,7 +463,6 @@ footer {
     min-width: 100%;
   }
 }
-
 /* ===============================
    BUTTON SYSTEM (GLOBAL)
 ================================ */
@@ -498,70 +493,4 @@ footer {
   color: #ffffff;
   border: none;
   cursor: pointer;
-}
-.review-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 14px;
-}
-
-.review-table th,
-.review-table td {
-  padding: 12px;
-  border-bottom: 1px solid #e5e7eb;
-  vertical-align: top;
-}
-
-.review-table th {
-  background: #f8fafc;
-  font-weight: 700;
-  text-align: left;
-}
-.review-table thead th {
-  background: #f8fafc;
-  color: #0f172a;
-}
-
-}
-.mapel-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-  gap: 14px;
-}
-
-.mapel-box {
-  padding: 14px;
-  border-radius: 16px;
-  font-weight: 600;
-}
-.tipe-ujian {
-  display: flex;
-  justify-content: center;
-  gap: 18px;
-  margin-top: 10px;
-}
-
-.tipe-box {
-  padding: 12px 18px;
-  border-radius: 14px;
-}
-.action-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 18px;
-  margin: 12px 0 4px;
-}
-
-.btn-start {
-  padding: 14px 36px;
-  border-radius: 18px;
-  font-size: 16px;
-  font-weight: 700;
-}
-
-.btn-logout {
-  padding: 14px 28px;
-  border-radius: 18px;
-  font-size: 14px;
-  opacity: 0.85;
 }
