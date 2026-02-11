@@ -407,6 +407,10 @@ textarea:focus {
 /* ==================================================
    RESULT / SCORE RING (BUG FIXED)
 ================================================== */
+.result-card {
+  text-align: center;
+}
+
 .score-ring {
   display: flex;
   justify-content: center;
@@ -573,7 +577,4 @@ footer {
 .tipe-box {
   padding: 12px 18px;
   border-radius: 14px;
-}
-.result-card {
-  text-align: center;
 }
