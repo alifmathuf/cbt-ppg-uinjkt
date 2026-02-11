@@ -75,6 +75,9 @@ fetch(`/cbt-web-app/data/${mapel}/${paket}.json`)
       };
     });
 
+    initGrid();
+    tampilSoal();
+  });
 
 /* ===============================
    TIMER REAL + WARNING
