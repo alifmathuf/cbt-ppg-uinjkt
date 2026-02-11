@@ -449,24 +449,7 @@ footer {
   opacity: .75;
 }
 
-/* ==================================================
-   ANIMATION & RESPONSIVE
-================================================== */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
 
-@media (max-width: 768px) {
-  .soal-grid { grid-template-columns: repeat(5, 1fr); }
-}
-
-@media (max-width: 480px) {
-  .nav-soal button,
-  .result-actions button {
-    min-width: 100%;
-  }
-}
 /* ===============================
    BUTTON SYSTEM (GLOBAL)
 ================================ */
@@ -520,40 +503,6 @@ footer {
   background: #f8fafc;
   color: #0f172a;
 }
-.leaderboard-card {
-  margin-top: 12px;
-}
-
-.leaderboard-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 14px;
-}
-
-.leaderboard-table th,
-.leaderboard-table td {
-  padding: 12px;
-  border-bottom: 1px solid #e5e7eb;
-  text-align: left;
-}
-
-.leaderboard-table th {
-  background: #f8fafc;
-  color: #0f172a;
-  font-weight: 700;
-}
-
-.leaderboard-table tr:nth-child(1) td {
-  font-weight: 700;
-  color: #16a34a;
-   
-   .leaderboard-card {
-  opacity: 0.95;
-}
-
-.leaderboard-card .section-title {
-  font-size: 15px;
-}
 
 }
 .mapel-grid {
@@ -577,4 +526,22 @@ footer {
 .tipe-box {
   padding: 12px 18px;
   border-radius: 14px;
+}
+/* ==================================================
+   ANIMATION & RESPONSIVE
+================================================== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .soal-grid { grid-template-columns: repeat(5, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .nav-soal button,
+  .result-actions button {
+    min-width: 100%;
+  }
 }
