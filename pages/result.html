@@ -12,36 +12,47 @@
 
 <main class="container">
 
-  <div class="card" style="text-align:center">
-
+  <!-- IDENTITAS PESERTA -->
+  <div class="card greeting-card">
     <h2 id="namaPeserta">-</h2>
+    <p class="section-title">Rekap Hasil Ujian</p>
   </div>
 
+  <!-- GRAFIK NILAI -->
   <div class="card">
     <canvas id="chartNilai"></canvas>
   </div>
 
-  <div class="card">
-    <h3>Hasil Pilihan Ganda </h3>
+  <!-- HASIL PILIHAN GANDA -->
+  <div class="card result-card">
+    <h3 class="section-title">Hasil Pilihan Ganda</h3>
+
     <p>Jawaban Benar: <b id="benar">0</b></p>
     <p>Total Soal: <b id="total">0</b></p>
     <p>Nilai: <b id="nilai">0</b></p>
+
     <p id="status"></p>
   </div>
-<div class="card">
-  <div class="case-actions">
-    <button onclick="kembali()">Kembali ke Dashboard</button>
-    <button onclick="exportPDF()">Export PDF</button>
+
+  <!-- AKSI -->
+  <div class="card">
+    <div class="result-actions">
+      <button class="btn-secondary" onclick="kembali()">Kembali ke Dashboard</button>
+      <button class="btn-primary" onclick="exportPDF()">Export PDF</button>
+    </div>
   </div>
 
 </main>
 
-<footer>© 2026 Designed with ❤️ <br>
-  Koorlas SKI Batch IV 2025 UIN SYAHID Jakarta</footer>
+<footer>
+  © 2026 Designed with ❤️ <br>
+  Koorlas SKI Batch IV 2025 UIN SYAHID Jakarta
+</footer>
 
-<!-- URUTAN SCRIPT PENTING -->
+<!-- SCRIPT -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="../assets/js/result.js"></script>
+
 </body>
 </html>
