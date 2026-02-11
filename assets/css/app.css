@@ -548,12 +548,10 @@ textarea:focus {
   vertical-align: top;
 }
 
-.review-table th {
-  background: #f8fafc;
-  font-weight: 700;
-  text-align: left;
+.review-table thead th {
+  background: var(--bg-soft);
+  color: var(--text-main);
 }
-
 
 /* ===============================
    BUTTON SYSTEM (GLOBAL)
