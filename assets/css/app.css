@@ -600,6 +600,24 @@ footer {
   cursor: pointer;
 }
 
+.review-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.review-table th,
+.review-table td {
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+  vertical-align: top;
+}
+
+.review-table th {
+  background: #f8fafc;
+  font-weight: 700;
+  text-align: left;
+}
 
 /* ==================================================
    ANIMATION & RESPONSIVE
