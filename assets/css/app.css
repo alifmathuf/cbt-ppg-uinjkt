@@ -621,7 +621,9 @@ footer {
   }
 }
 
-
+/* ===============================
+   BUTTON SYSTEM (GLOBAL)
+================================ */
 
 .btn-primary {
   padding: 14px 34px;
@@ -632,6 +634,12 @@ footer {
   color: #ffffff;
   border: none;
   cursor: pointer;
+}
+
+.btn-primary:disabled {
+  background: rgba(255,255,255,.15);
+  color: rgba(255,255,255,.6);
+  cursor: not-allowed;
 }
 
 .btn-secondary {
