@@ -63,3 +63,6 @@ function kembali() {
 function exportPDF() {
   alert('Export PDF akan diaktifkan di step berikutnya');
 }
+function lihatJawabanPG() {
+  window.location.href = '/cbt-web-app/pages/review-pg.html';
+}
