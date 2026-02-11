@@ -91,3 +91,12 @@ if (rekap) {
 
   rekap.innerText = teks || 'Belum ada hasil';
 }
+
+rekapEl.style.opacity = "0";
+rekapEl.style.transform = "translateY(6px)";
+setTimeout(() => {
+  rekapEl.textContent = teks;
+  rekapEl.style.opacity = "1";
+  rekapEl.style.transform = "translateY(0)";
+}, 150);
+
