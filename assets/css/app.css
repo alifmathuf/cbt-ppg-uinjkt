@@ -542,4 +542,38 @@ footer {
 .leaderboard-table tr:nth-child(1) td {
   font-weight: 700;
   color: #16a34a;
+   
+   .leaderboard-card {
+  opacity: 0.95;
+}
+
+.leaderboard-card .section-title {
+  font-size: 15px;
+}
+
+}
+.mapel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 14px;
+}
+
+.mapel-box {
+  padding: 14px;
+  border-radius: 16px;
+  font-weight: 600;
+}
+.tipe-ujian {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 10px;
+}
+
+.tipe-box {
+  padding: 12px 18px;
+  border-radius: 14px;
+}
+.result-card {
+  text-align: center;
 }
