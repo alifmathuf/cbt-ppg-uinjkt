@@ -23,7 +23,7 @@ if (greetingEl) {
   else if (hour >= 15 && hour < 18) waktu = 'sore';
   else if (hour >= 18 || hour < 6) waktu = 'malam';
 
-  greetingEl.innerText = `Assalaamu'alaikum Selamat ${waktu}`;
+  greetingEl.innerText = `Assalaamu'alaikum selamat ${waktu}`;
 }
 
 /* =========================
