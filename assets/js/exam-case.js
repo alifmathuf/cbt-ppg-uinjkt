@@ -1,8 +1,9 @@
 /* ===============================
    CONFIG
 ================================ */
-const DURASI = 30 * 60;
+const DURASI = 30 * 60; // detik
 const MIN_KATA = 150;
+const TOTAL_STEP = 4;
 
 /* ===============================
    DATA STUDI KASUS (ACAK 1)
@@ -46,7 +47,7 @@ const semuaKasus = [
   }
 ];
 
-// PILIH 1 KASUS ACAK
+// pilih 1 kasus acak (1 kali, tidak berubah)
 const kasus = semuaKasus[Math.floor(Math.random() * semuaKasus.length)];
 
 /* ===============================
@@ -54,52 +55,69 @@ const kasus = semuaKasus[Math.floor(Math.random() * semuaKasus.length)];
 ================================ */
 let step = 0;
 let waktu = DURASI;
-let jawaban = ['', '', '', ''];
+let jawaban = Array(TOTAL_STEP).fill('');
+
+/* ===============================
+   ELEMENT
+================================ */
+const timerEl = document.getElementById('timer');
+const judulKasusEl = document.getElementById('judulKasus');
+const judulPertanyaanEl = document.getElementById('judulPertanyaan');
+const jawabanEl = document.getElementById('jawaban');
+const counterEl = document.getElementById('counter');
+const progressFillEl = document.getElementById('progressFill');
+const btnSelesaiEl = document.getElementById('btnSelesai');
+
+/* ===============================
+   INIT
+================================ */
+render();
+startTimer();
 
 /* ===============================
    TIMER
 ================================ */
-setInterval(() => {
-  waktu--;
-  if (waktu <= 0) selesai(true);
+function startTimer() {
+  const interval = setInterval(() => {
+    waktu--;
 
-  const m = String(Math.floor(waktu / 60)).padStart(2, '0');
-  const s = String(waktu % 60).padStart(2, '0');
-  timer.innerText = `${m}:${s}`;
-}, 1000);
+    if (waktu <= 0) {
+      clearInterval(interval);
+      selesai(true);
+      return;
+    }
+
+    const menit = String(Math.floor(waktu / 60)).padStart(2, '0');
+    const detik = String(waktu % 60).padStart(2, '0');
+    timerEl.innerText = `${menit}:${detik}`;
+  }, 1000);
+}
 
 /* ===============================
-   RENDER
+   RENDER UI
 ================================ */
 function render() {
-  judulKasus.innerText = `Studi Kasus: ${kasus.nama}`;
-  judulPertanyaan.innerText =
-    `(${step + 1}/4) ${kasus.pertanyaan[step]}`;
+  judulKasusEl.innerText = `Studi Kasus: ${kasus.nama}`;
+  judulPertanyaanEl.innerText =
+    `(${step + 1}/${TOTAL_STEP}) ${kasus.pertanyaan[step]}`;
 
-  jawabanEl.value = jawaban[step];
+  jawabanEl.value = jawaban[step] || '';
   updateCounter();
   updateProgress();
 }
 
-const jawabanEl = document.getElementById('jawaban');
-const counter = document.getElementById('counter');
-const progressFill = document.getElementById('progressFill');
-const btnSelesai = document.getElementById('btnSelesai');
-
-render();
-
 /* ===============================
-   COUNTER KATA REALTIME
+   COUNTER KATA
 ================================ */
 jawabanEl.addEventListener('input', updateCounter);
 
-function hitungKata(teks) {
+function hitungKata(teks = '') {
   return teks.trim().split(/\s+/).filter(Boolean).length;
 }
 
 function updateCounter() {
   const jumlah = hitungKata(jawabanEl.value);
-  counter.innerText = `${jumlah} / ${MIN_KATA} kata`;
+  counterEl.innerText = `${jumlah} / ${MIN_KATA} kata`;
 }
 
 /* ===============================
@@ -107,17 +125,20 @@ function updateCounter() {
 ================================ */
 function next() {
   const jumlah = hitungKata(jawabanEl.value);
+
   if (jumlah < MIN_KATA) {
-    alert('Minimal 150 kata');
+    alert(`Minimal ${MIN_KATA} kata`);
     return;
   }
 
-  jawaban[step] = jawabanEl.value;
+  // simpan jawaban step sekarang
+  jawaban[step] = jawabanEl.value.trim();
   step++;
 
-  if (step >= 4) {
-    btnSelesai.disabled = false;
+  if (step >= TOTAL_STEP) {
     jawabanEl.disabled = true;
+    btnSelesaiEl.disabled = false;
+    updateProgress();
     return;
   }
 
@@ -125,22 +146,30 @@ function next() {
 }
 
 /* ===============================
-   PROGRESS
+   PROGRESS BAR
 ================================ */
 function updateProgress() {
-  progressFill.style.width = `${(step / 4) * 100}%`;
+  const persen = (step / TOTAL_STEP) * 100;
+  progressFillEl.style.width = `${persen}%`;
 }
 
 /* ===============================
    SELESAI
 ================================ */
 function selesai(auto = false) {
-  if (!auto && !confirm('Yakin ingin menyelesaikan studi kasus?')) return;
+  if (!auto) {
+    const yakin = confirm('Yakin ingin menyelesaikan studi kasus?');
+    if (!yakin) return;
+  }
 
-  localStorage.setItem('hasilCase', JSON.stringify({
-    jenis: kasus.nama,
-    jawaban
-  }));
+  localStorage.setItem(
+    'hasilCase',
+    JSON.stringify({
+      jenis: kasus.nama,
+      jawaban,
+      selesaiPada: new Date().toISOString()
+    })
+  );
 
   window.location.href = '/cbt-web-app/pages/result.html';
 }
