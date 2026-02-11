@@ -720,33 +720,6 @@ textarea:focus {
   border: none;
   cursor: pointer;
 }
-
-/* ==========================================
-   EXAM PG – NAV MOBILE FIX
-========================================== */
-@media (max-width: 600px) {
-
-  .nav-soal {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-
-  /* Tombol sebelumnya & selanjutnya sejajar */
-  .nav-soal .btn-nav {
-    flex: 1 1 48%;
-    min-width: unset;
-    padding: 14px;
-  }
-
-  /* Tombol selesai full lebar */
-  .nav-soal .btn-finish {
-    flex: 1 1 100%;
-    padding: 16px;
-    margin-top: 6px;
-  }
-}
-
 /* ==================================================
    FOOTER
 ================================================== */
