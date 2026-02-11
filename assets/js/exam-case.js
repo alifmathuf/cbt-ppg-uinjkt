@@ -201,3 +201,23 @@ function exportCasePDF() {
 
   doc.save(`studi-kasus-${data.jenis}.pdf`);
 }
+// WORD COUNTER (SAFE PATCH)
+const textarea = document.getElementById("jawaban");
+const counter = document.getElementById("counter");
+const btnSelesai = document.getElementById("btnSelesai");
+const MAX_KATA = 150;
+
+if (textarea) {
+  textarea.addEventListener("input", () => {
+    const kata = textarea.value.trim().split(/\s+/).filter(Boolean);
+    counter.textContent = `${kata.length} / ${MAX_KATA} kata`;
+
+    if (kata.length >= MAX_KATA) {
+      btnSelesai.disabled = false;
+      counter.style.color = "#22c55e";
+    } else {
+      btnSelesai.disabled = true;
+      counter.style.color = "";
+    }
+  });
+}
