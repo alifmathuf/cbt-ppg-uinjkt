@@ -65,16 +65,11 @@ async function pilihPaket(p) {
     const response = await fetch(filePath);
 
     if (!response.ok) {
-      throw new Error("File tidak ditemukan");
+      alert("Mohon maaf, paket soal belum tersedia.");
+      return;
     }
 
-    const data = await response.json();
-
-    if (!data || data.length === 0) {
-      throw new Error("Data kosong");
-    }
-
-    // Jika sampai sini berarti valid
+    // Jika file ada
     selectedPaket = paketName;
     localStorage.setItem('paket', selectedPaket);
 
@@ -85,7 +80,7 @@ async function pilihPaket(p) {
       .classList.add('active');
 
   } catch (error) {
-    alert(".");
+    alert("Mohon maaf, paket soal belum tersedia.");
   }
 }
 
