@@ -1,3 +1,35 @@
+/* =========================
+   CEK LOGIN
+========================= */
+const user = JSON.parse(localStorage.getItem('cbtUser'));
+if (!user) {
+  window.location.href = '/cbt-web-app/index.html';
+}
+
+/* =========================
+   GREETING & USER INFO + AVATAR
+========================= */
+const userInfo = document.getElementById('userInfo');
+const greetingEl = document.getElementById('greeting');
+
+if (userInfo) {
+  userInfo.innerText = `${user.nama} (${user.kelas})`;
+}
+
+if (greetingEl) {
+  const hour = new Date().getHours();
+  let waktu = 'pagi';
+  if (hour >= 12 && hour < 15) waktu = 'siang';
+  else if (hour >= 15 && hour < 18) waktu = 'sore';
+  else if (hour >= 18 || hour < 6) waktu = 'malam';
+
+  greetingEl.innerText = `Assalaamu'alaikum selamat ${waktu}`;
+}
+
+/* =========================
+   PILIH MAPEL
+========================= */
+let selectedMapel = null;
 let selectedMapel = null;
 let selectedPaket = null;
 let selectedTipe = null;
