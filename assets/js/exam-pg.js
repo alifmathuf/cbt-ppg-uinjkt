@@ -66,7 +66,12 @@ if (!startTime) {
    LOAD SOAL
 ================================ */
 fetch(`/cbt-web-app/data/${mapel}/${paket}.json`)
-  .then(r => r.json())
+  .then(r => {
+    if (!r.ok) {
+      throw new Error("Paket tidak tersedia");
+    }
+    return r.json();
+  })
   .then(data => {
     soal = shuffle(data).slice(0, JUMLAH_SOAL).map(s => {
       const opsi = shuffle(
@@ -80,10 +85,6 @@ fetch(`/cbt-web-app/data/${mapel}/${paket}.json`)
       };
     });
 
-    /* ===============================
-       🔥 SIMPAN DATA UNTUK REVIEW PG
-       (DITAMBAHKAN DI SINI)
-    ================================ */
     localStorage.setItem(
       'pg_soal',
       JSON.stringify(soal.map(s => s.q))
@@ -94,10 +95,13 @@ fetch(`/cbt-web-app/data/${mapel}/${paket}.json`)
       JSON.stringify(soal.map(s => s.kunci))
     );
 
-    /* =============================== */
-
     initGrid();
     tampilSoal();
+  })
+  .catch(err => {
+    console.error(err);
+    alert("Mohon maaf, paket soal belum tersedia.");
+    window.location.href = "/cbt-web-app/pages/dashboard.html";
   });
 
 
